@@ -4,7 +4,7 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 app.get('/about', function (req, res) {
-  res.send('About');
+  res.send('about.html');
 });
 var server = app.listen(8000, function () {
   var host = server.address().address;
