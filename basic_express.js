@@ -5,19 +5,19 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 app.get('/about', function (req, res) {
-  res.send('about.html');
+  res.sendFile('about.html');
 });
 app.get('/sammy', function (req, res) {
-  res.send('Sammy.html');
+  res.sendFile('/public/Sammy.html', {root: __dirname});
 });
 app.get('/aidan', function (req, res) {
-  res.send('Aidan.html');
+  res.sendFile('/public/Aidan.html', {root: __dirname});
 });
 app.get('/abby', function (req, res) {
-  res.send('Abby.html');
+  res.sendFile('/public/Abby.html', {root: __dirname});
 });
 app.get('/jason', function (req, res) {
-  res.send('Jason.html');
+  res.sendFile('/public/Jason.html', {root: __dirname});
 });
 var server = app.listen(8000, function () {
   var host = server.address().address;
