@@ -7,6 +7,18 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
   res.send('about.html');
 });
+app.get('/sammy', function (req, res) {
+  res.send('Sammy.html');
+});
+app.get('/aidan', function (req, res) {
+  res.send('Aidan.html');
+});
+app.get('/abby', function (req, res) {
+  res.send('Abby.html');
+});
+app.get('/jason', function (req, res) {
+  res.send('Jason.html');
+});
 var server = app.listen(8000, function () {
   var host = server.address().address;
   var port = server.address().port;
