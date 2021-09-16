@@ -5,19 +5,19 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 app.get('/about', function (req, res) {
-  res.send('about.html');
+  res.send(about.html);
 });
 app.get('/sammy', function (req, res) {
-  res.send('Sammy.html');
+  res.send(Sammy.html);
 });
 app.get('/aidan', function (req, res) {
-  res.send('Aidan.html');
+  res.send(Aidan.html);
 });
 app.get('/abby', function (req, res) {
-  res.send('Abby.html');
+  res.send(Abby.html);
 });
 app.get('/jason', function (req, res) {
-  res.send('Jason.html');
+  res.send(Jason.html);
 });
 var server = app.listen(8000, function () {
   var host = server.address().address;
