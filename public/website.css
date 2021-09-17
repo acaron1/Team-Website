@@ -46,3 +46,8 @@
   font-size: 50px;
   text-align: center;
 }
+#quoteDisplay{
+  width: 600px;
+  height: 100px;
+  font-size: 30px;
+}
