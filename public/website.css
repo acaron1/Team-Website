@@ -16,12 +16,12 @@
 }
 #box {
   width: 1500px;
-  height: 800px;
+  height: 2000px;
   margin: auto;
 }
 #desc{
   width: 1500px;
-  height: 100px;
+  height: 200px;
   border-style: solid;
   border-width: 5px;
   margin: auto;
@@ -30,7 +30,7 @@
 }
 #spec{
   width: 1500px;
-  height: 100px;
+  height: 200px;
   border-style: solid;
   border-width: 5px;
   margin: auto;
@@ -39,7 +39,7 @@
 }
 #career{
   width: 1500px;
-  height: 100px;
+  height: 200px;
   border-style: solid;
   border-width: 5px;
   margin: auto;
