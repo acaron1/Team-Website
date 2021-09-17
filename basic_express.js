@@ -5,7 +5,7 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 app.get('/about', function (req, res) {
-  res.sendFile('about.html');
+  res.sendFile('/public/about.html', {root: __dirname});
 });
 app.get('/sammy', function (req, res) {
   res.sendFile('/public/Sammy.html', {root: __dirname});
