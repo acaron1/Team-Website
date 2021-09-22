@@ -1,6 +1,17 @@
+// Imports
 var express = require('express');
+const expressLayouts = require('express-ejs-layouts')
 var app = express();
-app.use(express.static("public"))
+
+
+// Static Files
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+// Set Templating Engine
+app.use(expressLayouts)
+app.set('layout', './layouts/full-width')
+app.set('view engine', 'ejs')
+
 app.get('/', function (req, res) {
   res.sendFile('/public/home.html', {root: __dirname});
 });
@@ -11,7 +22,7 @@ app.get('/sammy', function (req, res) {
   res.sendFile('/public/Sammy.html', {root: __dirname});
 });
 app.get('/aidan', function (req, res) {
-  res.sendFile('/public/Aidan.html', {root: __dirname});
+  res.render('aidan');
 });
 app.get('/abby', function (req, res) {
   res.sendFile('/public/Abby.html', {root: __dirname});
