@@ -1,6 +1,9 @@
 {
   "Sammy" : {
-
+    "name" : "Sammy",
+    "bio" : "Sammy is a senior in computer programming at York County School of Technology. They use They/Them pronouns",
+    "spec" : "Sammy specializes in CSS and HTML",
+    "career" : "However Sammy does not want to go it the IT field and intends to go to college for Fashion after they graduate"
   }
 }
 {
@@ -16,6 +19,5 @@
 }
 {
   "Jason" : {
-    
   }
 }
