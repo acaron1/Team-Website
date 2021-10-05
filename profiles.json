@@ -24,9 +24,12 @@
 }
 {
   "Jason" : {
+<<<<<<< HEAD
     "name" : "Jason",
     "bio" : "Jason is a sad boi",
     "spec" : "Jason specializes in depression",
     "career" : "Making games to get myself out of depression",
+=======
+>>>>>>> 95fd8d36c829c2543697dcafa554d450e13344d5
   }
 }
