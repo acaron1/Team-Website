@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path')
 var app = express();
 const fs = require('fs');
+const url = require('url');
 //setup public folder
 app.use(express.static(__dirname + '/public'));
 // Set Templating Engine
@@ -49,6 +50,28 @@ app.get('/jason', function (req, res) {
     spec: readprofiles.Jason.spec,
     career: readprofiles.Jason.career
 })
+});
+app.get('/feedback',function(req, res){
+  const feedback = url.parse(req.url,true).query;
+  console.log(feedback);
+  if (feedback.name && feedback.adjective){
+    res.send(`hello ${feedback.name} glad to see that you are doing ${feedback.adjective}`);
+    var rawcomments = fs.readFileSync('comments.json')
+    var comment = JSON.parse(rawcomments)
+    var feedbackobjects = {name: feedback.name, adjective: feedback.adjective}
+    comment['comments'].push(feedbackobjects)
+    console.log(comment);
+    var sendcomments = JSON.stringify(comment)
+    fs.writeFile('comments.json', sendcomments, 'utf8', function(){
+      console.log('file is now written like a monkey');
+    })
+  }
+
+if (feedback.adjective == null || feedback.adjective == undefined){
+    res.send("you forgot the adjective");}
+if (feedback.name == null || feedback.name == undefined)
+ { res.send(" you forgot the name dum dum.");
+}
 });
 var server = app.listen(8000, function () {
   var host = server.address().address;
