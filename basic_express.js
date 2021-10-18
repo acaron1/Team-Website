@@ -57,6 +57,8 @@ app.get('/jason', function (req, res) {
 })
 });
 app.get('/feedback',function(req, res){
+  var rawcomments = fs.readFileSync('comments.json')
+  var comment = JSON.parse(rawcomments)
   const feedback = url.parse(req.url,true).query;
   console.log(feedback);
   if (feedback.name && feedback.adjective){
@@ -73,7 +75,8 @@ app.get('/feedback',function(req, res){
   } else if (feedback.adjective == null || feedback.adjective == undefined){
     if (feedback.name == null || feedback.name == undefined){
       res.render('feedback', {
-        yell: "" // check if you not doing any querys
+        yell: "",
+        comment: comment.comments // check if you not doing any querys
       })
     }else{
       res.send("you either forgot the name or adjective but now querys is not required.ps query still work")
@@ -84,10 +87,13 @@ app.get('/feedback',function(req, res){
 
 });
 app.post("/feedback",function(req, res){
+  var rawcomments = fs.readFileSync('comments.json')
+  var comment = JSON.parse(rawcomments)
   if(req.body.name && req.body.adjective){
     console.log("it working");
     res.render('feedback',{
-      yell: `The monkey got your ${req.body.adjective} come and get it ${req.body.name}`
+      yell: `The monkey got your ${req.body.adjective} come and get it ${req.body.name}`,
+      ccc: comment.comments
     })
     var rawcomments = fs.readFileSync('comments.json')
     var comment = JSON.parse(rawcomments) // getting the json file data
@@ -100,11 +106,13 @@ app.post("/feedback",function(req, res){
 
   }else if (req.body.name){
     res.render('feedback', {
-      yell: "YOU FORGOT THE ADJECTIVE silly monkey" //if you forgotjust the adjective
+      yell: "YOU FORGOT THE ADJECTIVE silly monkey",
+      ccc: comment.comments //if you forgotjust the adjective
     })
   } else {
     res.render('feedback', {
-      yell: "silly strangers trix is for kids" // well you are a stranger
+      yell: "silly strangers trix is for kids",
+      ccc: comment.comments // well you are a stranger
     })
   }
 });

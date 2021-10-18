@@ -12,5 +12,8 @@
       <button type="submit" name="Submit">Submit</button>
     </form>
     <h2> <%- yell %> </h2>
+    <% for (hey in comment) { %>
+    <div> <%= comment[hey].name %>: <%= comment[hey].adjective%> </div>
+<% } %>
   </body>
 </html>
