@@ -57,26 +57,28 @@ app.get('/jason', function (req, res) {
 })
 });
 app.get('/feedback',function(req, res){
-  var rawcomments = fs.readFileSync('comments.json')
-  var comment = JSON.parse(rawcomments)
+  var rawcomments = fs.readFileSync('comments.json') // getting the json file data
+  var comment = JSON.parse(rawcomments) // using json raw data to data
   const feedback = url.parse(req.url,true).query;
   console.log(feedback);
   if (feedback.name && feedback.adjective){
-    res.send(`hello ${feedback.name} glad to see that you are doing ${feedback.adjective}`);
-    var rawcomments = fs.readFileSync('comments.json')
-    var comment = JSON.parse(rawcomments) // getting the json file data
     var feedbackobjects = {name: feedback.name, adjective: feedback.adjective} // put the results in object form
     comment['comments'].push(feedbackobjects)
     console.log(comment);
     var sendcomments = JSON.stringify(comment)
     fs.writeFile('comments.json', sendcomments, 'utf8', function(){
       console.log('file is now written like a monkey');
+
+    })
+    res.render('feedback', {
+      yell: "",
+      comment: comment.comments // check if you not doing any querys
     })
   } else if (feedback.adjective == null || feedback.adjective == undefined){
     if (feedback.name == null || feedback.name == undefined){
       res.render('feedback', {
         yell: "",
-        comment: comment.comments // check if you not doing any querys
+        ccc: comment.comments // check if you not doing any querys
       })
     }else{
       res.send("you either forgot the name or adjective but now querys is not required.ps query still work")
@@ -87,21 +89,21 @@ app.get('/feedback',function(req, res){
 
 });
 app.post("/feedback",function(req, res){
-  var rawcomments = fs.readFileSync('comments.json')
-  var comment = JSON.parse(rawcomments)
+  var rawcomments = fs.readFileSync('comments.json') //reading json file
+  var comment = JSON.parse(rawcomments)// using json raw data to data
+
   if(req.body.name && req.body.adjective){
+    var feedbackobjects = {name: req.body.name, adjective: req.body.adjective} // put the results into object form
+    comment['comments'].push(feedbackobjects) // put it in the array //
+
     console.log("it working");
     res.render('feedback',{
-      yell: `The monkey got your ${req.body.adjective} come and get it ${req.body.name}`,
-      ccc: comment.comments
+      yell: `Your comment has been submitted`,
+      ccc: comment.comments // set ccc  to the comment array
     })
-    var rawcomments = fs.readFileSync('comments.json')
-    var comment = JSON.parse(rawcomments) // getting the json file data
-    var feedbackobjects = {name: req.body.name, adjective: req.body.adjective} //put it in object form
-    comment['comments'].push(feedbackobjects)// put it in the array
-    var sendcomments = JSON.stringify(comment) // stringify comment to send to the json file
+
+    var sendcomments = JSON.stringify(comment) // stringify the comment to send to json
     fs.writeFile('comments.json', sendcomments, 'utf8', function(){ // send it to json file
-      console.log('The Monkey have stole it');
     })
 
   }else if (req.body.name){
