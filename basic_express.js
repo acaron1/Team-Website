@@ -98,7 +98,7 @@ app.post("/feedback",function(req, res){
 
     console.log("it working");
     res.render('feedback',{
-      yell: `The monkey got your ${req.body.adjective} come and get it ${req.body.name} and put it in the list`,
+      yell: `Your comment has been submitted`,
       ccc: comment.comments // set ccc  to the comment array
     })
 
