@@ -12,5 +12,8 @@
       <button type="submit" name="Submit">Submit</button>
     </form>
     <h2> <%- yell %> </h2>
+    <% for (hey in ccc) { %> <!-- hey is a number going up for each object listed in the array after they finish the code block -->
+    <div> <%= ccc[hey].name %> have commented "<%= ccc[hey].adjective%>" </div> <!-- it will repeat and set to the html from the ejs template thingy -->
+<% } %>
   </body>
 </html>
