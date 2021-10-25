@@ -92,19 +92,22 @@ app.post("/feedback",function(req, res){
   var rawcomments = fs.readFileSync('comments.json') //reading json file
   var comment = JSON.parse(rawcomments)// using json raw data to data
 
-  if(req.body.name && req.body.adjective){
+  if(req.body.Submit == 'delete'){
+    let clearedObj = JSON.stringify({comments: []});
+    fs.writeFile('comments.json', clearedObj, 'utf8', () => console.log("Cleared comments"));
+    res.redirect('/feedback');
+  }
+
+  else if(req.body.name && req.body.adjective){
     var feedbackobjects = {name: req.body.name, adjective: req.body.adjective} // put the results into object form
     comment['comments'].push(feedbackobjects) // put it in the array //
-
-    console.log("it working");
-    res.render('feedback',{
-      yell: `Your comment has been submitted`,
-      ccc: comment.comments // set ccc  to the comment array
-    })
-
+    console.log(req.body.Submit);
     var sendcomments = JSON.stringify(comment) // stringify the comment to send to json
     fs.writeFile('comments.json', sendcomments, 'utf8', function(){ // send it to json file
     })
+    console.log("it working");
+    res.redirect('/feedback')
+
 
   }else if (req.body.name){
     res.render('feedback', {
@@ -118,6 +121,7 @@ app.post("/feedback",function(req, res){
     })
   }
 });
+
 var server = app.listen(8000, function () {
   var host = server.address().address;
   var port = server.address().port;

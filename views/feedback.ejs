@@ -2,18 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/website.css">
     <title></title>
   </head>
   <body>
-    <h1> Name and Adjective </h1>
-    <form  action="/feedback" method="post">
+    <div id="feedbacktitle"><h1> Name and Adjective </h1></div>
+    <div id="textbox"><form  action="/feedback" method="post">
       <input type="text" name="name" placeholder="Name" ><br>
       <input style="height: 50px; font-size:14pt;" size="25"  type="text" name="adjective" placeholder="Adjective"> <br>
       <button type="submit" name="Submit">Submit</button>
-    </form>
+      <button value="delete"type="submit" name="Submit">delete</button>
+    </form></div>
     <h2> <%- yell %> </h2>
     <% for (hey in ccc) { %> <!-- hey is a number going up for each object listed in the array after they finish the code block -->
-    <div> Name: <%= ccc[hey].name %> <br> comment: <%= ccc[hey].adjective%> </div> <br> <!-- it will repeat and set to the html from the ejs template thingy -->
+    <div id="commenttext"> Name: <%= ccc[hey].name %> <br> comment: <%= ccc[hey].adjective%> </div> <br> <!-- it will repeat and set to the html from the ejs template thingy -->
 <% } %>
   </body>
 </html>

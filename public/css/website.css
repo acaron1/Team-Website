@@ -6,17 +6,24 @@
   margin: auto;
   font-size: 70px;
   text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
 }
-#links {
+a{
   width: 600px;
   height: 55px;
   border-style: solid;
   border-width: 5px;
-  font-size: 50px
+  font-size: 50px;
+  background-color: grey;
+  color: white;
+  border-color: black;
+  text-decoration: underline;
 }
 #box {
   width: 1500px;
-  height: 2000px;
+  height: auto;
   margin: auto;
 }
 #desc{
@@ -27,6 +34,9 @@
   margin: auto;
   font-size: 50px;
   text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
 }
 #spec{
   width: 1500px;
@@ -36,6 +46,9 @@
   margin: auto;
   font-size: 50px;
   text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
 }
 #career{
   width: 1500px;
@@ -45,9 +58,57 @@
   margin: auto;
   font-size: 50px;
   text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
 }
 #quoteDisplay{
   width: 600px;
   height: 100px;
   font-size: 30px;
+  color: white;
+}
+#button{
+  width: 1500px;
+  height: 200px;
+  font-size: 50px;
+  margin: auto;
+  text-align: center;
+}
+body{
+  background-color: black;
+}
+#textbox{
+  width: 1500px;
+  height: 200px;
+  border-style: solid;
+  border-width: 5px;
+  margin: auto;
+  font-size: 50px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
+}
+#feedbacktitle{
+  width: 1500px;
+  height: 200px;
+  border-style: solid;
+  border-width: 5px;
+  margin: auto;
+  font-size: 50px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
+}
+#commenttext{
+  width: 1500px;
+  height: auto;
+  margin: auto;
+  font-size: 30px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+  border-color: black;
 }
