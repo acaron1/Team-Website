@@ -60,7 +60,7 @@ app.get('/feedback',function(req, res){
   var rawcomments = fs.readFileSync('comments.json') // getting the json file data
   var comment = JSON.parse(rawcomments) // using json raw data to data
   const feedback = url.parse(req.url,true).query;
-  console.log(feedback);
+
   if (feedback.name && feedback.adjective){
     var feedbackobjects = {name: feedback.name, adjective: feedback.adjective} // put the results in object form
     comment['comments'].push(feedbackobjects)
@@ -91,6 +91,17 @@ app.get('/feedback',function(req, res){
 app.post("/feedback",function(req, res){
   var rawcomments = fs.readFileSync('comments.json') //reading json file
   var comment = JSON.parse(rawcomments)// using json raw data to data
+    for (number in comment.comments){
+      if (number == req.body.Submit){
+        console.log(comment.comments[number].name);
+        comment['comments'].splice(number,1)
+        var sendcomments = JSON.stringify(comment)
+        fs.writeFile('comments.json', sendcomments, 'utf8', function(){ // send it to json file
+        })
+
+
+      }
+    }
 
   if(req.body.Submit == 'delete'){
     let clearedObj = JSON.stringify({comments: []});
@@ -101,11 +112,12 @@ app.post("/feedback",function(req, res){
   else if(req.body.name && req.body.adjective){
     var feedbackobjects = {name: req.body.name, adjective: req.body.adjective} // put the results into object form
     comment['comments'].push(feedbackobjects) // put it in the array //
-    console.log(req.body.Submit);
+
+
     var sendcomments = JSON.stringify(comment) // stringify the comment to send to json
     fs.writeFile('comments.json', sendcomments, 'utf8', function(){ // send it to json file
     })
-    console.log("it working");
+    console.log("comment log");
     res.redirect('/feedback')
 
 
