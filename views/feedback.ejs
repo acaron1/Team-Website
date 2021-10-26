@@ -11,11 +11,13 @@
       <input type="text" name="name" placeholder="Name" ><br>
       <input style="height: 50px; font-size:14pt;" size="25"  type="text" name="adjective" placeholder="Adjective"> <br>
       <button type="submit" name="Submit">Submit</button>
-      <button value="delete"type="submit" name="Submit">delete</button>
+      <button value="delete"type="submit" name="Submit">Delete All</button>
     </form></div>
     <h2> <%- yell %> </h2>
     <% for (hey in ccc) { %> <!-- hey is a number going up for each object listed in the array after they finish the code block -->
-    <div id="commenttext"> Name: <%= ccc[hey].name %> <br> comment: <%= ccc[hey].adjective%> </div> <br> <!-- it will repeat and set to the html from the ejs template thingy -->
+    <div id="commenttext"> Name: <%= ccc[hey].name %> <br> comment: <%= ccc[hey].adjective%> <form  action="/feedback" method="post">
+      <button value="<%= [hey] %>"type="submit" name="Submit">Delete</button>
+    </form> </div> <br> <!-- it will repeat and set to the html from the ejs template thingy -->
 <% } %>
   </body>
 </html>
